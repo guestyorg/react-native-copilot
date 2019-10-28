@@ -10,8 +10,10 @@ type Props = {
 
 const StepNumber = ({
   currentStepNumber,
+  isLastStep,
+  isFirstStep,
 }: Props) => (
-  <View style={styles.stepNumber}>
+  isLastStep !== isFirstStep && <View style={styles.stepNumber}>
     <Text style={[styles.stepNumberText]}>{currentStepNumber}</Text>
   </View>
 );
