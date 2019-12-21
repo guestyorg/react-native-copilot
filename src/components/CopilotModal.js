@@ -53,7 +53,7 @@ class CopilotModal extends Component<Props, State> {
     // If animated was not specified, rely on the default overlay type
     animated: typeof NativeModules.RNSVGSvgViewManager !== 'undefined',
     androidStatusBarVisible: false,
-    backdropColor: 'rgba(0, 0, 0, 0.4)',
+    backdropColor: 'rgba(39, 43, 45, 0.8)',
     labels: {},
   };
 
@@ -109,7 +109,7 @@ class CopilotModal extends Component<Props, State> {
       obj.top -= StatusBar.currentHeight; // eslint-disable-line no-param-reassign
     }
 
-    let stepNumberLeft = obj.left - STEP_NUMBER_RADIUS;
+    let stepNumberLeft = obj.left - STEP_NUMBER_RADIUS - 3;
 
     if (stepNumberLeft < 0) {
       stepNumberLeft = (obj.left + obj.width) - STEP_NUMBER_RADIUS;
@@ -182,12 +182,12 @@ class CopilotModal extends Component<Props, State> {
       layout,
       animated: this.props.animated,
       size: {
-        x: obj.width,
-        y: obj.height,
+        x: obj.width + 8,
+        y: obj.height + 8,
       },
       position: {
-        x: Math.floor(Math.max(obj.left, 0)),
-        y: Math.floor(Math.max(obj.top, 0)),
+        x: Math.floor(Math.max(obj.left, 0)) - 4,
+        y: Math.floor(Math.max(obj.top, 0)) - 4,
       },
     });
   }
@@ -272,8 +272,8 @@ class CopilotModal extends Component<Props, State> {
           currentStepNumber={this.props.currentStepNumber}
         />
       </Animated.View>,
-      <Animated.View key="arrow" style={[styles.arrow, this.state.arrow]} />,
-      <Animated.View key="tooltip" style={[styles.tooltip, this.props.tooltipStyle, this.state.tooltip]}>
+      <Animated.View key="arrow" style={[styles.arrow, this.state.arrow, { marginBottom: 10 }]} />,
+      <Animated.View key="tooltip" style={[styles.tooltip, this.props.tooltipStyle, this.state.tooltip, { marginBottom: 10 }]}>
         <TooltipComponent
           isFirstStep={this.props.isFirstStep}
           isLastStep={this.props.isLastStep}
