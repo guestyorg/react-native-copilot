@@ -13,9 +13,18 @@ const StepNumber = ({
   isLastStep,
   isFirstStep,
 }: Props) => (
-  isLastStep !== isFirstStep && <View style={styles.stepNumber}>
-    <Text style={[styles.stepNumberText]}>{currentStepNumber}</Text>
-  </View>
-);
+    currentStepNumber > 1 ?
+
+      <View style={styles.stepNumber}>
+        <Text style={[styles.stepNumberText]}>{currentStepNumber}</Text>
+      </View> :
+
+      isLastStep !== isFirstStep ?
+        <View style={styles.stepNumber}>
+          <Text style={[styles.stepNumberText]}>{currentStepNumber}</Text>
+        </View> :
+
+        null
+  );
 
 export default StepNumber;
